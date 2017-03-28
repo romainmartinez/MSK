@@ -6,15 +6,15 @@ Please cite this paper if you use the code in this repository as part of a publi
 # Structure
 
 MSK:.
-│   MSK_preparation.m       (*used to compute Tau, the joint torque?*)
-│   README.md               (*documentation*)
+│   MSK_preparation.m       (*used to compute Tau, the joint torque?*)  
+│   README.md               (*documentation*)  
 │   
 └───functions
-        disp_name.m         (*print participant & trial's name*)
-        get_model.m         (*get S2M model & informations*)
-        get_path.m          (*get import, export & mat path*)
-        inverse_dynamics.m  (*compute inverse dynamics & interpolation*)
-        load_data.m         (*load kinematic data*)
+        disp_name.m         (*print participant & trial's name*)  
+        get_model.m         (*get S2M model & informations*)  
+        get_path.m          (*get import, export & mat path*)  
+        inverse_dynamics.m  (*compute inverse dynamics & interpolation*)  
+        load_data.m         (*load kinematic data*)  
 
 # Contributors
 Romain Martinez, Ph.D. candidate at S2M in Université de Montréal.
