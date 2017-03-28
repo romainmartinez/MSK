@@ -14,7 +14,7 @@ saveresult = 1;
 MSK_functions
 
 %% path
-path2=get_path;
+localpath=get_path;
 
 %% load data
-load_data(path2.mat);
+load_data(localpath.mat);
