@@ -6,5 +6,3 @@ freq.emg = btkGetAnalogFrequency(btkc3d);
 freq.camera = btkGetPointFrequency(btkc3d);
 
 btkCloseAcquisition(btkc3d);
-
-

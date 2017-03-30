@@ -22,16 +22,10 @@ function result = strfuzzy(str,strarray,n)
 %   email:   martinez.staps@gmail.com
 %   Website: https://github.com/romainmartinez
 
-
-
-
-
-
-
 if nargin < 2, error('Requires at least two arguments'), end
 if nargin < 3, n = length(strarray); end
 
-A = cellfun( @(x) strdist(str,x), strarray );
+A = cellfun( @(x) strdist(str,x), strarray);
 [~,idx] = sort(A);
 result = strarray(idx);
 result = result(1:n);

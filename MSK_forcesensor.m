@@ -10,15 +10,14 @@
 
 clear variables; close all; clc
 
+% add locals & S2M functions
 MSK_functions
 
-
+% get subjects names
 alias.subject = sujets_valides;
+
+% load data from c3d
 load_c3dfields(alias.subject,'emg','point','force')
-
-
-
-
 
 %% 1) force index (GUI)
 
