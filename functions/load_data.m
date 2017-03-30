@@ -20,3 +20,4 @@ for imat = nb_mat : -1 : 1
 end
 
 % plot([data.ID])
+% legend(model.nameDoF)
