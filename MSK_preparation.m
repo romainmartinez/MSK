@@ -14,7 +14,7 @@ saveresult = 1;
 MSK_functions
 
 %% path
-localpath=get_path;
+localpath=get_path('MSK');
 
 %% load data
 load_data(localpath.mat);
