@@ -23,8 +23,7 @@ handles(3) = uicontrol('style','push',...
     'units','pix',...
     'position',[10 450 180 40],...
     'fontsize',14,...
-    'string',ref{index},...
-    'Callback',@next_callback);
+    'string',ref{index});
 % List 2
 handles(4) = uicontrol('style','list',...
     'unit','pix',...
@@ -36,19 +35,17 @@ handles(5) = uicontrol('style','push',...
     'units','pix',...
     'position',[200 450 180 40],...
     'fontsize',14,...
-    'string','NaN',...
-    'Callback',@nan_callback);
+    'string','NaN');
 % bouton delete
 handles(6) = uicontrol('style','push',...
     'units','pix',...
     'position',[400 450 180 40],...
     'fontsize',14,...
-    'string','delete',...
-    'Callback',@deletefromlist);
+    'string','delete');
 
-% set(handles(3),'Callback',@next_callback);
-% set(handles(5),'Callback',@nan_callback);
-% set(handles(6),'Callback',@deletefromlist);
+set(handles(3),'Callback',@next_callback);
+set(handles(5),'Callback',@nan_callback);
+set(handles(6),'Callback',@deletefromlist);
 set(handles(2),'KeyPressFcn',@key_stroke);
 
 
@@ -64,7 +61,7 @@ guidata(handles(1),allParam);
 end
 
 
-function next_callback(hObject,~)
+function next_callback(hObject,varargin)
 
 allParam = guidata(hObject);
 
@@ -84,9 +81,8 @@ guidata(hObject,allParam);
 
 if allParam.index > length(allParam.ref)
     assignin('caller', 'oldlabel', allParam.oldlabel)
-    close gcf
+    %     close gcf
 else
-    
     % Set the next fieldname to list 1
     set(allParam.handles(2),'string',allParam.field);
     
@@ -110,11 +106,14 @@ else
     %     [~,idx] = sort([near{:}],'descend');
     %     sorted = allParam.field(idx);
     
+    % put ~~~~~ at the end of the list to avoid bug
+    fake = contains(near,'~~~~~');
+    temp = near(fake); near(fake) = near(end); near(end) =temp;
     set(allParam.handles(2),'string',near);
 end
 end
 
-function nan_callback(hObject,~)
+function nan_callback(hObject,varargin)
 allParam = guidata(hObject);
 
 % Write the current value
@@ -127,16 +126,15 @@ guidata(hObject,allParam);
 
 if allParam.index > length(allParam.ref)
     assignin('caller', 'oldlabel', allParam.oldlabel)
-    close gcf
+    %     close gcf
 else
-    
     % Set the next channel to button
     set(allParam.handles(3),'string',allParam.ref{allParam.index});
     
     % Set the next channel to list 2
     initial_name=cellstr(get(allParam.handles(4),'String'));
     set(allParam.handles(4),'string',[initial_name;allParam.oldlabel{1,allParam.index-1}]);
-    
+        
     % Sort list with the nearest string
     %method1
     %     near = contains(allParam.field,allParam.ref{allParam.index},'IgnoreCase',true);
@@ -150,6 +148,9 @@ else
     %     [~,idx] = sort([near{:}],'descend');
     %     sorted = allParam.field(idx);
     
+    % put ~~~~~ at the end of the list to avoid bug
+    fake = contains(near,'~~~~~');
+    temp = near(fake); near(fake) = near(end); near(end) =temp;
     set(allParam.handles(2),'string',near);
 end
 end
@@ -175,10 +176,15 @@ end
 
 function key_stroke(hObject,Event)
 if strcmp(Event.Character,'1')
-    next_callback(handles(3),[])
+    next_callback(hObject,Event,'key');
 elseif strcmp(Event.Character,'2')
-    nan_callback(hObject,Event)
+    nan_callback(hObject,Event,'key')
 elseif strcmp(Event.Character,'3')
     deletefromlist(hObject,Event)
+end
+allParam = guidata(hObject);
+assignin('caller', 'oldlabel', allParam.oldlabel)
+if allParam.index > length(allParam.ref)
+    close gcf
 end
 end
