@@ -17,6 +17,9 @@ for isub = sub_nb : -1 : 1
         
         [data(itrial),assign] = data_c3dfields(btk,assign,varargin);
         
+       data(itrial).force = force_calibration(data(itrial).force);
+       
+       data(itrial).force = force_compute(data(itrial).force,freq);
     end
     col_assign(localpath,'save',assign);
 end
