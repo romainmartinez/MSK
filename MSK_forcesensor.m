@@ -1,5 +1,4 @@
-%   Description: used to compute the force in the global system & trial
-%   definition
+%   Description: used to compute the force in the global system & trial definition
 %   Output:  gives matrices of forceinglobal and forceindex
 %   Functions: uses functions present in \\10.89.24.15\e\Project_IRSST_LeverCaisse\Codes\Functions_Matlab
 %
@@ -14,7 +13,7 @@ clear variables; close all; clc
 MSK_functions
 
 % get subjects names
-alias.subject = sujets_valides;
+alias.subject = sujets_valides('mat');
 
 % load data from c3d
 load_c3dfields(alias.subject,'emg','point','force')

@@ -10,7 +10,7 @@ for imat = nb_mat : -1 : 1
     load([mat(imat).folder '\' mat(imat).name])
     
     % open S2M model
-    model = get_model(mat(imat).name);
+    model = get_model('body',mat(imat).name);
     
     % inverse dynamics (return Tau)
     data = inverse_dynamics(temp,model,'interpolation');

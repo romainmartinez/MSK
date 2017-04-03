@@ -6,9 +6,11 @@ for isub = sub_nb : -1 : 1
     
     localpath = get_path('force',subject{isub});
     
-    assign = col_assign(localpath,'load');
+    assign = col_assign(localpath,'load'); % load col assignment
     
     trial_nb = length(localpath.c3d);
+    
+    model = get_model('box'); % open model
     
     for itrial = trial_nb : -1 : 1
         disp_name(localpath.c3d(itrial).name(5:end-4),'trial',itrial,trial_nb)
@@ -17,10 +19,18 @@ for isub = sub_nb : -1 : 1
         
         [data(itrial),assign] = data_c3dfields(btk,assign,varargin);
         
-       data(itrial).force = force_calibration(data(itrial).force);
-       
-       data(itrial).force = force_compute(data(itrial).force,freq);
+        RT = box_IK(model,data(itrial).point,'IK');
+        
+        data(itrial).force = force_calibration(data(itrial).force);
+        
+        force_global(data(itrial).force,RT)
+        
+        data(itrial).force = force_compute(data(itrial).force,freq);
     end
+    % save channel assignment
     col_assign(localpath,'save',assign);
+    
+    % close model
+    S2M_rbdl('delete', model.ID);
 end
 
