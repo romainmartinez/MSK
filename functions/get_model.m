@@ -1,12 +1,11 @@
-function [model] = get_model(name)
+function [model] = get_model(path2, imat)
 model.number = 2.1;
 
 % path
-model.path = sprintf('%s10.89.24.15\\f\\Data\\Shoulder\\Lib\\%sd\\Model_%d\\Model.s2mMod',...
-    '\\',name(1:end-4),round(model.number));
+model.path = [path2.F '/Data/Shoulder/Lib/' path2.mat(imat).name(1:end-4) 'd/Model_' num2str(round(model.number)) '/Model.s2mMod'];
 
 % open model
-model.ID = S2M_rbdl('new',model.path);
+model.ID = S2M_rbdl('new',[model.path '/Model.s2mMod']);
 
 % DoF
 model.nameDoF = S2M_rbdl('nameDof', model.ID);

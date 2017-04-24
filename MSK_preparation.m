@@ -6,15 +6,16 @@
 %   email:   martinez.staps@gmail.com
 %   Website: https://github.com/romainmartinez
 %_____________________________________________________________________________
+
 clear variables; close all; clc
-%% switch
+
+path2 = load_functions('linux', 'MSK');
+
+% switch
 saveresult = 1;
 
-%% load functions (local & S2M)
-MSK_functions
+% path
+path2=get_path(path2, 'MSK');
 
-%% path
-localpath=get_path('MSK');
-
-%% load data
-load_data(localpath.mat);
+% load data
+load_data(path2);

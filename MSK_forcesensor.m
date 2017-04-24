@@ -10,11 +10,11 @@
 
 clear variables; close all; clc
 
-MSK_functions
+path2 = load_functions('linux', 'MSK');
 
+alias.subject = IRSST_participants('IRSST');
 
-alias.subject = sujets_valides;
-load_c3dfields(alias.subject,'emg','point','force')
+load_c3dfields(path2,alias.subject,'emg','point','force')
 
 
 
