@@ -1,10 +1,15 @@
-function [model] = get_model(name)
+function [model] = get_model(varargin)
 model.number = 2.1;
 
-% path
-model.path = sprintf('%s10.89.24.15\\f\\Data\\Shoulder\\Lib\\%sd\\Model_%d\\Model.s2mMod',...
-    '\\',name(1:end-4),round(model.number));
-
+switch varargin{1}
+    case 'body'
+        model.path = sprintf('%s10.89.24.15\\f\\Data\\Shoulder\\Lib\\%sd\\Model_%d\\Model.s2mMod',...
+            '\\',varargin{2}(1:end-4),round(model.number));
+    case 'box'
+        model.path = '\\10.89.24.15\e\Projet_IRSST_LeverCaisse\ElaboratedData\MSK\box_model';
+    otherwise
+        error('please, choose body or box.')
+end
 % open model
 model.ID = S2M_rbdl('new',model.path);
 
