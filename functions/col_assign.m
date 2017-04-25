@@ -1,10 +1,10 @@
-function assign = col_assign(localpath,varargin)
+function assign = col_assign(path2,varargin)
 
 if nargin == 1
     error('please, select save or load')
 elseif varargin{1} == 'load'
     try
-        load(localpath.assign)
+        load(path2.assign)
     catch
         warning('Assign mat not found. Assigning an empty assign.');
         assign = [];

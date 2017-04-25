@@ -9,14 +9,11 @@
 
 clear variables; close all; clc
 
-% add locals & S2M functions
-MSK_functions
+path2 = load_functions('linux', 'MSK');
 
-% get subjects names
-alias.subject = sujets_valides('mat');
+alias.subject = IRSST_participants('IRSST');
 
-% load data from c3d
-load_c3dfields(alias.subject,'emg','point','force')
+load_c3dfields(path2,alias.subject,'emg','point','force')
 
 %% 1) force index (GUI)
 

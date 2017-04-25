@@ -1,16 +1,16 @@
-function [data] = load_data(mat)
+function [data] = load_data(path2)
 
-nb_mat = length(mat);
+nb_mat = length(path2.mat);
 
 for imat = nb_mat : -1 : 1
     % disp participant's name
-    disp_name(mat(imat).name,'subject',imat,nb_mat)
+    disp_name(path2.mat(imat).name,'subject',imat,nb_mat)
     
     % load data
-    load([mat(imat).folder '\' mat(imat).name])
+    load([path2.mat(imat).folder '/' path2.mat(imat).name])
     
     % open S2M model
-    model = get_model('body',mat(imat).name);
+    model = get_model(path2, imat);
     
     % inverse dynamics (return Tau)
     data = inverse_dynamics(temp,model,'interpolation');

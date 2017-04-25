@@ -1,16 +1,15 @@
-function [localpath] = get_path(varargin)
-serveur = '\\10.89.24.15\';
-ElaboratedData = 'e\\Projet_IRSST_LeverCaisse\ElaboratedData\';
+function [path2] = get_path(path2, varargin)
+ElaboratedData = [path2.E '/Projet_IRSST_LeverCaisse/ElaboratedData/'];
 switch varargin{1}
     case 'MSK'
-        localpath.data = [serveur ElaboratedData 'matrices\cinematique\'];
-        localpath.export = [serveur ElaboratedData 'MSK\'];
-        localpath.mat = dir([localpath.data '*mat']);
+        path2.data = [ElaboratedData 'matrices/cinematique/'];
+        path2.export = [ElaboratedData 'MSK/'];
+        path2.mat = dir([path2.data '*mat']);
     case 'force'
-        localpath.data = [serveur 'f\Data\Shoulder\RAW\' varargin{2} 'd\trials\'];
-        localpath.assign = [serveur ElaboratedData 'matrices\col_assign\' varargin{2} '.mat'];
-        localpath.export_index = [serveur ElaboratedData 'matrices\forceindex\'];
-        localpath.export_force = [serveur ElaboratedData 'MSK\forceinglobal\'];
-        localpath.c3d = dir([localpath.data '*c3d']);
+        path2.data = [path2.F '/Data/Shoulder/RAW/' varargin{2} 'd/trials/'];
+        path2.assign = [ElaboratedData 'matrices/col_assign/' varargin{2} '.mat'];
+        path2.export_index = [ElaboratedData 'matrices/forceindex/'];
+        path2.export_force = [ElaboratedData 'MSK/forceinglobal/'];
+        path2.c3d = dir([path2.data '*c3d']);
 end
 

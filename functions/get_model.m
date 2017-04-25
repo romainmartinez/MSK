@@ -11,7 +11,7 @@ switch varargin{1}
         error('please, choose body or box.')
 end
 % open model
-model.ID = S2M_rbdl('new',model.path);
+model.ID = S2M_rbdl('new',[model.path '/Model.s2mMod']);
 
 % DoF
 model.nameDoF = S2M_rbdl('nameDof', model.ID);
