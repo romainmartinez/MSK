@@ -81,7 +81,6 @@ guidata(hObject,allParam);
 
 if allParam.index > length(allParam.ref)
     assignin('caller', 'oldlabel', allParam.oldlabel)
-    %     close gcf
 else
     % Set the next fieldname to list 1
     set(allParam.handles(2),'string',allParam.field);
@@ -126,7 +125,6 @@ guidata(hObject,allParam);
 
 if allParam.index > length(allParam.ref)
     assignin('caller', 'oldlabel', allParam.oldlabel)
-    %     close gcf
 else
     % Set the next channel to button
     set(allParam.handles(3),'string',allParam.ref{allParam.index});
@@ -169,7 +167,6 @@ allParam.oldlabel{1,allParam.index} = L{1}(L{2}(:));
 allParam.field(strcmp(allParam.field,L{1}(L{2}(:)))) = [];
 
 guidata(hObject,allParam);
-
 
 set(allParam.handles(2),'string',allParam.field);
 end

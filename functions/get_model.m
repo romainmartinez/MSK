@@ -3,10 +3,10 @@ model.number = 2.1;
 
 switch varargin{1}
     case 'body'
-        model.path = sprintf('%s10.89.24.15\\f\\Data\\Shoulder\\Lib\\%sd\\Model_%d\\Model.s2mMod',...
-            '\\',varargin{2}(1:end-4),round(model.number));
+        model.path = sprintf('%s10.89.24.15//f//Data//Shoulder//Lib//%sd//Model_%d//Model.s2mMod',...
+            '//',varargin{2}(1:end-4),round(model.number));
     case 'box'
-        model.path = '\\10.89.24.15\e\Projet_IRSST_LeverCaisse\ElaboratedData\MSK\box_model';
+        model.path = '//10.89.24.15/e/Projet_IRSST_LeverCaisse/ElaboratedData/MSK/box_model';
     otherwise
         error('please, choose body or box.')
 end
