@@ -17,4 +17,4 @@ compute_c3d(path2,alias.subject,'emg','point','force')
 
 %% 1) force index (GUI)
 
-%% 2) force in global coordinate
+%% 2) force in global coordinate2

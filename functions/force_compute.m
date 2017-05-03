@@ -29,7 +29,7 @@ if nargin > 1 && sum(contains(varargin, 'forceindex'))
         index = find(Fnorm(2:end-1000) > threshold);
     end
     
-    figure('units','normalized','position',[.1 .1 .9 .7])
+    figure('units','normalized','position',[.1 .28 .9 .6])
     plot(Fnorm, 'linewidth',2)
     vline([index(1) index(end)],{'g','r'},{'start','end'})
     button = uicontrol('style','push',...
@@ -38,6 +38,7 @@ if nargin > 1 && sum(contains(varargin, 'forceindex'))
         'fontsize',14,...
         'string','manual');
     set(button,'Callback',@manual_index);
+    set(gcf,'KeyPressFcn',@key_stroke);
     
     allParam = guidata(button);
     
@@ -49,6 +50,7 @@ if nargin > 1 && sum(contains(varargin, 'forceindex'))
     
     allParam.freq = freq;
     allParam.forceindex = forceindex;
+    
     guidata(button,allParam);
     
     waitfor(button);
@@ -62,4 +64,14 @@ x = x*allParam.freq.camera/allParam.freq.analog;
 allParam.forceindex{1} = x(1);
 allParam.forceindex{2} = x(2);
 assignin('caller', 'forceindex', allParam.forceindex)
+end
+
+function key_stroke(hObject,Event)
+if strcmp(Event.Character,'1')     % manual
+    manual_index(hObject,Event,'key');
+    assignin('caller', 'forceindex', forceindex)
+elseif strcmp(Event.Character,'2') % close
+    allParam = guidata(hObject);
+    close gcf
+end
 end
