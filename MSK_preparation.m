@@ -9,7 +9,7 @@
 
 clear variables; close all; clc
 
-path2 = load_functions('linux', 'MSK');
+path2 = load_functions('windo', 'MSK');
 
 % switch
 saveresult = 1;

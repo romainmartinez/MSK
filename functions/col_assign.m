@@ -11,5 +11,5 @@ elseif varargin{1} == 'load'
     end
 elseif varargin{1} == 'save'
     assign = varargin{2};
-    save(localpath.assign,'assign');
+    save(path2.assign,'assign');
 end

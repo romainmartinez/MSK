@@ -9,12 +9,12 @@
 
 clear variables; close all; clc
 
-path2 = load_functions('linux', 'MSK');
+path2 = load_functions('windo', 'MSK');
 
 alias.subject = IRSST_participants('IRSST');
 
-load_c3dfields(path2,alias.subject,'emg','point','force')
+compute_c3d(path2,alias.subject,'emg','point','force')
 
 %% 1) force index (GUI)
 
-%% 2) force in global coordinate
+%% 2) force in global coordinate2
