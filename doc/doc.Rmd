@@ -1,0 +1,28 @@
+---
+output: 
+  pdf_document:
+    citation_package: natbib
+    keep_tex: no
+    fig_caption: true
+    latex_engine: pdflatex
+    template: ./template.tex
+title: "Musculoskeletal Modeling using OpenSim and Python"
+thanks: "**Current version**: `r format(Sys.time(), '%B %d, %Y')`; **Corresponding author**: romain.martinez@umontreal.ca"
+author:
+- name: Romain Martinez
+  affiliation: Laboratoire de Simulation et Modélisation du Mouvement, Université de Montréal
+abstract: "Write this"
+keywords: "Musculoskeletal Modeling, OpenSim, Python, Kinematic, Dynamic"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+geometry: margin=1in
+fontfamily: mathpazo
+fontsize: 11pt
+# spacing: double
+bibliography: ./bib/lib.bib
+biblio-style: apsr
+endnote: no
+---
+
+# Install OpenSim on Ubuntu
+
+> [Link to OpenSim support](https://simtk-confluence.stanford.edu/display/OpenSim/Linux+Support)
