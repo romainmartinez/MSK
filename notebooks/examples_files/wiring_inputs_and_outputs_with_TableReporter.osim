@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<OpenSimDocument Version="30516">
+	<Model name="model">
+		<!--List of components that this component owns and serializes.-->
+		<components>
+			<Body name="body">
+				<!--The mass of the body (kg)-->
+				<mass>1</mass>
+				<!--The location (Vec3) of the mass center in the body frame.-->
+				<mass_center>0 0 0</mass_center>
+				<!--The elements of the inertia tensor (Vec6) as [Ixx Iyy Izz Ixy Ixz Iyz] measured about the mass_center and not the body origin.-->
+				<inertia>1 1 1 0 0 0</inertia>
+			</Body>
+			<FreeJoint name="joint">
+				<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The parent frame for the joint.).-->
+				<socket_parent_frame_connectee_name>../model/ground</socket_parent_frame_connectee_name>
+				<!--Path to a Component that satisfies the Socket 'child_frame' of type PhysicalFrame (description: The child frame for the joint.).-->
+				<socket_child_frame_connectee_name>body</socket_child_frame_connectee_name>
+				<!--List containing the generalized coordinates (q's) that parameterize this joint.-->
+				<coordinates>
+					<Coordinate name="joint_coord_0">
+						<!--All properties of this object have their default values.-->
+					</Coordinate>
+					<Coordinate name="joint_coord_1">
+						<!--All properties of this object have their default values.-->
+					</Coordinate>
+					<Coordinate name="joint_coord_2">
+						<!--All properties of this object have their default values.-->
+					</Coordinate>
+					<Coordinate name="joint_coord_3">
+						<!--All properties of this object have their default values.-->
+					</Coordinate>
+					<Coordinate name="joint_coord_4">
+						<!--All properties of this object have their default values.-->
+					</Coordinate>
+					<Coordinate name="joint_coord_5">
+						<!--All properties of this object have their default values.-->
+					</Coordinate>
+				</coordinates>
+			</FreeJoint>
+			<TableReporter__Vec3_ name="reporter">
+				<!--The recording time interval (s). If interval == 0, defaults toevery valid integration time step.-->
+				<report_time_interval>0.10000000000000001</report_time_interval>
+				<!--Paths to outputs (channels) to satisfy the list Input 'inputs' of type InputT (description: Variable list of quantities to be reported.). To specify multiple paths, put spaces between them.-->
+				<input_inputs_connectee_names>../model/body|position ../model|com_position(com_pos)</input_inputs_connectee_names>
+			</TableReporter__Vec3_>
+		</components>
+	</Model>
+</OpenSimDocument>
