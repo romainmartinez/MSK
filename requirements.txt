@@ -1,3 +1,2 @@
 conda install -c kidzik opensim
-ipykernel
 numpy
